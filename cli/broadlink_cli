@@ -114,7 +114,7 @@ if args.convert:
     durations = to_microseconds(data)
     print(format_durations(durations))
 if args.temperature:
-    print(dev.check_temperature())
+    print(dev.get_temp())
 if args.humidity:
     print(dev.check_humidity())
 if args.energy:
