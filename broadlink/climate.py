@@ -77,12 +77,7 @@ class hysen(Device):
         data["power"] = payload[4] & 1
         data["active"] = (payload[4] >> 4) & 1
         data["temp_manual"] = (payload[4] >> 6) & 1
-<<<<<<< HEAD
-        data["room_temp"] = payload[5] / 2.0
-=======
-        data["heating_cooling"] = (payload[4] >> 7) & 1
         data["room_temp"] = self._room_temp_logic(payload)
->>>>>>> 8fc4c7b (Thermostat: get the 1st decimal place)
         data["thermostat_temp"] = payload[6] / 2.0
         data["auto_mode"] = payload[7] & 0xF
         data["loop_mode"] = payload[7] >> 4
@@ -203,14 +198,7 @@ class hysen(Device):
 
     # Set device on(1) or off(0), does not deactivate Wifi connectivity.
     # Remote lock disables control by buttons on thermostat.
-<<<<<<< HEAD
     def set_power(self, power: int = 1, remote_lock: int = 0) -> None:
-=======
-    # heating_cooling: heating(0) cooling(1)
-    def set_power(
-        self, power: int = 1, remote_lock: int = 0, heating_cooling: int = 0
-    ) -> None:
->>>>>>> 8fc4c7b (Thermostat: get the 1st decimal place)
         """Set the power state of the device."""
         self.send_request([0x01, 0x06, 0x00, 0x00, remote_lock, power])
 
